@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+<body>
+    <header>
+        {% include header.html %}
+    </header>
+
+    <main>
+        <div class="intro">
+            <image src="{{ "/assets/images/logo-300.png" | absolute_url }}" class="img-circle" alt="Matt Seemon">
+            <h1>{{ page.title }}</h1>
+            <h2>{{ content }}</h2>
+            <a href="https://mattseemon.in" class="btn btn-default"><span class="glyphicon glyphicon-home"></span>Take Me Home </a>
+            <a href="mailto:contact@mattseemon.in" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+        </div>
+    </main>
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <footer>
+        {% include footer.html %}
+    </footer>
+    {% if jekyll.environment == 'production' %}
+    {% include analytics.html %}
+    {% endif %}
+</body>
+
+</html>

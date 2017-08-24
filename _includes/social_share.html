@@ -1,0 +1,29 @@
+<!-- Social Share -->
+{% if site.features.enable_social_share == true %}
+<div class="post-share text-center">
+    <ul class="pagination">
+        <li>
+            <a data-original-title="Share on twitter" data-toggle="tooltip" href="https://twitter.com/share?text={{ page.title }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Share on google-plus" data-toggle="tooltip" href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">
+                <i class="fa fa-google-plus-official"></i>
+            </a>
+        </li>
+        <li>
+            <a data-original-title="Share on facebook" data-toggle="tooltip" href="https://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        {% if page.image %}
+        <li>
+            <a data-original-title="Share on pinterest" data-toggle="tooltip" href="https://pinterest.com/pin/create/button/?url={{ site.url }}{{ page.url }}&description={{ page.title }}&media={{ page.image }}">
+                <i class="fa fa-pinterest"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}

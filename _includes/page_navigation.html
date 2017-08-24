@@ -1,0 +1,22 @@
+<nav>
+    <ul class="pager">
+        {% if page.previous %}
+        <li class="previous">
+            <a class="btn btn-primary" href="{{ page.previous.url }}" rel="prev"><i class="fa fa-angle-left"></i> previous</a>
+        </li>
+        {% else %}
+        <li class="previous">
+            <a class="btn btn-primary disabled" href="#" rel="prev"><i class="fa fa-angle-left"></i> previous</a>
+        </li>
+        {% endif %}
+        {% if page.next %}
+        <li class="next">
+            <a class="btn btn-primary" href="{{ page.next.url }}" rel="next">next <i class="fa fa-angle-right"></i></a>
+        </li>
+        {% else %}
+        <li class="next">
+            <a class="btn btn-primary disabled" href="#" rel="next">next <i class="fa fa-angle-right"></i></a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

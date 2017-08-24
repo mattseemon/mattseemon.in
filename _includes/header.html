@@ -1,0 +1,30 @@
+ <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">{{ site.title }}</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" aria-label="Menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        {% for menu in site.data.navigation %}
+                            <li><a href="{{ menu.href }}">{{ menu.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        {% for social in site.contact.socials %}
+                            <li class="navbar-icon"><a href="{{ social.url }}" target="blank"><i class="fa {{ social.icon }}"></i></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+<body>
+    <header>
+        {% include header.html %}
+    </header>
+    <main>
+        <div class="page-header">
+        <h1> {{ page.title}} </h1>
+        {% if page.description %}<h3>{{ page.description}}</h3>{% endif %}
+        <h5>{{ page.date | date: '%B %d, %Y' }}</h5>
+        </div>
+        <div class="text-justify">
+            <div class="row">
+                <div class="col-md-12">
+                    <article>
+                        <div >
+                            {% if page.image %}
+                            <div class="post-media overlay">
+                                <a class="feature-image magnific hover-animate" href="{{ site.baseurl }}/{{ page.image }}">
+                                    <img alt="some image" src="{{ site.baseurl }}/{{ page.image }}">
+                                    <i class="fa fa-search-plus"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            <div class="post-body">
+                                {{ content }}
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            {% if page.categories %}
+                            <span class="post-category">
+                                <i class="fa fa-folder-open" style="color:red;"></i>
+                                {% for category in page.categories %}
+                                <a href="{{ site.baseurl }}{{ site.category_page }}#{{ tag | slugify }}">
+                                    {{ category | slugify }}
+                                </a>
+                                {% unless forloop.last %}, {% endunless %}
+                                {% endfor %}
+                            </span>
+                            {% endif %} | 
+			                {% if page.tags %}
+                            <span class="post-tags">
+                                <i class="fa fa-tags" style="color:red;"></i>
+                                {% for tag in page.tags  %}
+                                <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}">
+                                    {{ tag }}
+                                </a>
+                                {% unless forloop.last %}, {% endunless %}
+                                {% endfor %}
+                            </span>
+                            {% endif %} | 
+                            <span class="post-link">
+                                <a href="{{ page.url | relative_url }}#comments">
+                                    <i class="fa fa-comments" style="color:red;"></i>
+                                    {{ site.data.comments[page.slug] | size }}
+                                    comments
+                                </a>
+                            </span>
+                        </div>
+                        {% include social_share.html %}
+                        {% include page_navigation.html %}
+                    </article>
+                    <!-- Begin Comments -->
+                    {% include page_comments.html %}
+                    <!-- End Comments -->
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="{{ "assets/js/jquery.form.min.js" | relative_url }}" ></script>
+    <script src="{{ "assets/js/comments.js" | relative_url }}" ></script>
+    <footer>
+        {% include footer.html %}
+    </footer>
+    {% if jekyll.environment == 'production' %}
+    {% include analytics.html %}
+    {% endif %}
+</body>
+
+</html>

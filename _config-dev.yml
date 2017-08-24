@@ -1,0 +1,5 @@
+url: "http://mattseemon.dev"
+
+# staticman Integration
+staticman:
+  branch: "dev"

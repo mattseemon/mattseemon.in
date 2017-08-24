@@ -1,0 +1,57 @@
+                {% if site.features.enable_site_search %}
+                <div>
+                    <form>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="search posts" type="text">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+                <div style="text-align: left; ">
+                    <h3>Categories</h3>
+                        {% for tag in site.categories %}
+                            <a href="{{ site.baseurl }}{{ site.category_page }}#{{ tag[0] | slugify }}">{{ tag[0] | slugify }}</a>{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div style="text-align: left; ">
+                    <h3>Popular Tags</h3>
+                        {% for tag in site.tags %}
+                            <a href="{{ site.baseurl }}{{ site.category_page }}#{{ tag[0] | slugify }}">{{ tag[0] | slugify }}</a>{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div style="text-align: left;">
+                    <h3>Recent posts</h3>
+                        {% for post in site.posts limit: 3 %}
+                        <p>
+                            <a href="{{ post.url }}">
+                                {{ post.title }}
+                            </a>
+                            <small>
+                                {{ post.date | date_to_string }}
+                            </small>
+                        </p>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div style="text-align: left;">
+                    <h3>Archive</h3>
+                    <ul>
+                        {% assign counter = 0 %}
+                        {% for post in site.posts %}
+                            {% assign thisyear = post.date | date: "%B %Y" %}
+                            {% assign prevyear = post.previous.date | date: "%B %Y" %}
+                            {% assign counter = counter | plus: 1 %}
+                            {% if thisyear != prevyear %}
+                                <li><a href="/blog/archive/#{{ post.date | date:"%Y" }}">{{ thisyear }} ({{ counter }})</a></li>
+                                {% assign counter = 0 %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
