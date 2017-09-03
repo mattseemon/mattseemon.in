@@ -34,7 +34,7 @@
                             <span class="post-category">
                                 <i class="fa fa-folder-open" style="color:red;"></i>
                                 {% for category in page.categories %}
-                                <a href="{{ site.baseurl }}{{ site.category_page }}#{{ tag | slugify }}">
+                                <a href="{{ site.category_page | absolute_url }}#{{ category | slugify }}">
                                     {{ category | slugify }}
                                 </a>
                                 {% unless forloop.last %}, {% endunless %}
@@ -45,7 +45,7 @@
                             <span class="post-tags">
                                 <i class="fa fa-tags" style="color:red;"></i>
                                 {% for tag in page.tags  %}
-                                <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}">
+                                <a href="{{ site.tag_page | absolute_url }}#{{ tag | slugify }}">
                                     {{ tag }}
                                 </a>
                                 {% unless forloop.last %}, {% endunless %}
@@ -53,7 +53,7 @@
                             </span>
                             {% endif %} | 
                             <span class="post-link">
-                                <a href="{{ page.url | relative_url }}#comments">
+                                <a href="{{ page.url | absolute_url }}#comments">
                                     <i class="fa fa-comments" style="color:red;"></i>
                                     {{ site.data.comments[page.slug] | size }}
                                     comments
