@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Portfolio & Services
-description: What do I do and offer?
+description: What I do and offer!
 menu-header: Portfolio
 permalink: /portfolio/
 sitemap:

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Karaoke Catalog
-description: Want to know what I got?
+description: Sing along with me!
 heading: Karaoke
 permalink: /karaoke/
 sitemap:

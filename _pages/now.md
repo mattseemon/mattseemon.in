@@ -1,7 +1,7 @@
 ---
 layout: page
 title: /now
-description: What I'm doing now?
+description: Here's what I'm upto!
 permalink: /now/
 sitemap:
   lastmod: 2017-07-31

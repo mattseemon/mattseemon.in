@@ -1,7 +1,7 @@
 --- 
 layout: page 
 title: Contact
-description: Want to talk me? 
+description: Get in touch!
 menu-header: Contact 
 permalink: /contact/
 sitemap:

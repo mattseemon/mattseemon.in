@@ -92,6 +92,7 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - vendor
 
 include:
   - _pages
