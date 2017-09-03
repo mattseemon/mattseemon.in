@@ -1,0 +1,43 @@
+<div id="comment{% unless include.r %}{{ index | prepend: '-'}}{% else %}{{ include.index | prepend: '-'}}{% endunless %}">
+    <div class="media-left">
+        {% if include.email %}
+            <img class="media-objects img-circle" src="https://www.gravatar.com/avatar/{{ include.email }}?d={{ site.general.avatar | absolute_url }}&s=60" srcset="https://www.gravatar.com/avatar/{{ include.email }}?d={{ site.general.avatar | absolute_url }}&s=120 2x" alt="{{ include.name | escape }}">
+        {% else %}
+            <img alt="{{ include.name | escape }}" class="media-objects img-circle" src="{{ site.general.avatar | relative_url }}">
+        {% endif %}
+    </div>
+    <div class="media-body">
+        <div class="media-inner">
+            <h5 class="media-heading clearfix">
+                {% unless include.url == blank %}
+                    <a href="{{ include.url }}" rel="external nofollow">{{ include.name }}</a>, {{ include.date | date: '%B %d, %Y' }}
+                {% else %}
+                    {{ include.name }}, {{ include.date | date: '%B %d, %Y' }}
+                {% endunless %}
+                {% unless include.replying_to != 0 or page.comments_locked == true %}
+                <a class="comment-reply pull-right" rel="nofollow" href="#comment-{{ include.index }}" onclick="return addComment.moveForm('comment-{{ include.index }}', '{{ include.index }}', 'respond', '{{ page.slug }}')">reply to {{ include.name }}</a>
+                {% endunless %}
+            </h5>
+            <p>
+                {{ include.message | markdownify }}
+            </p>
+        </div>
+        {% capture i %}{{ include.index }}{% endcapture %}
+        {% assign replies = site.data.comments[page.slug] | where_exp: 'item', 'item.replying_to == i' %}
+        {% if replies.size > 0 %}
+        <ul class="medial-list">
+        {% for reply in replies %}
+            {% assign index       = forloop.index | prepend: '-' | prepend: include.index %}
+            {% assign r           = reply.replying_to %}
+            {% assign replying_to = r | to_integer %}
+            {% assign email       = reply.email %}
+            {% assign name        = reply.name %}
+            {% assign url         = reply.url %}
+            {% assign date        = reply.date %}
+            {% assign message     = reply.message %}
+            <li class="media">{% include comment.html index=index replying_to=replying_to email=email name=name url=url date=date message=message %}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>

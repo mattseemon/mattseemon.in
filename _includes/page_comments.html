@@ -1,0 +1,100 @@
+<!-- Commments -->
+{% if site.general.repository and site.staticman.branch %}
+    {% if site.data.comments[page.slug] %}
+        <div id="comments">
+            <div>
+                <h3><span><i class="fa fa-comments"></i></span>
+                    {% if site.data.comments[page.slug].size > 1 %}
+                        {{ site.data.comments[page.slug] | size }}
+                    {% endif %}
+                    Comments<br/>
+                    <small>Join the conversation</small>
+                </h3>
+            </div>
+            <ul class="medial-list">
+                {% assign idx = 0 %}
+
+                {% for comment in site.data.comments[page.slug] %}
+                    {% if comment[1].replying_to == "" %}
+                        {% assign idx         = idx | plus: 1 %}
+                        {% assign index       = idx %}
+                        {% assign r           = comment[1].replying_to %}
+                        {% assign replying_to = r | to_integer %}
+                        {% assign email       = comment[1].email %}
+                        {% assign name        = comment[1].name %}
+                        {% assign url         = comment[1].url %}
+                        {% assign date        = comment[1].date %}
+                        {% assign message     = comment[1].message %}
+                        <li class="media">
+                            {% include comment.html index=index replying_to=replying_to email=email name=name url=url date=date message=message %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% unless page.comments_locked == true %}
+    <div id="respond">
+        <div>
+            <h3>Join the conversation<br/><small>I would love to hear from you</small></h3>
+        </div>
+        <form class="comments-body" id="commentsForm" method="post" action="https://api.staticman.net/v2/entry/{{ site.general.repository }}/{{ site.staticman.branch }}/comments">
+            <fieldset>
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input class="form-control" id="name" name="fields[name]" placeholder="Your name *" type="text" minlength="2" required>
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input class="form-control" id="email" name="fields[email]" placeholder="Your email * (used for Gravatar image and reply notifications)" type="email" required>
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                    <input class="form-control" id="url" name="fields[url]" placeholder="Your website (optional)" type="url">
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon" style="vertical-align:top;"><i class="fa fa-pencil"></i></span>
+                    <textarea class="form-control" id="message" name="fields[message]" placeholder="Your comments * (Markdown is allowed)" rows="5" required spellcheck="true"></textarea>
+                </div>
+                <div class="form-group">
+                    <input id="comment-form-reply" name="options[subscribe]" value="email" type="checkbox">
+                    Notify me of replies by email.
+                </div>
+                <div class="hidden">
+                    <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}">
+                    <input type="hidden" name="options[parent]" value="{{ page.url | absolute_url }}">
+                    <input type="hidden" id="comment-replying-to" name="fields[replying_to]" value="">
+                    <input type="hidden" id="comment-post-id" name="options[slug]" value="{{ page.slug }}">
+                    <label for="comment-form-location">Leave blank if you are a human</label>
+                    <input type="text" id="comment-form-location" name="fields[hidden]" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
+                </div>
+                <div class="form-group small-screen-center">
+                    <a class="btn btn-primary" rel="nofollow" id="cancel-comment-reply-btn" href="{{ page.url | absolute_url }}#respond" style="display:none;" >
+                        Cancel reply
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-comment"></i> Add comment
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+        <div id="messages"></div>
+        <script async src="https://www.google.com/recaptcha/api.js"></script>
+    </div>
+    {% else %}
+    <div class="comments-form post-showinfo">
+        <div class="comments-head small-screen-center">
+            <h3><h3><span><i class="fa fa-comments"></i></span>
+                Comments are closed
+            </h3>
+            <small>
+                If you have a question concerning the content of this page, please feel free to <a href="{{ site.url }}/contact/">contact me</a>.
+            </small>
+        </div>
+    </div>
+    {% endunless %}
+{% endif %}

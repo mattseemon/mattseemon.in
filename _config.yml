@@ -1,0 +1,98 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Matt Seemon
+subtitle: Voice Over Artist, Karaoke Jockey, Novice Actor, Compère, IT Enthusiast
+
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://mattseemon.in" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Contact Information
+contact:
+  name: Matt Seemon
+  address: 202, Blossomville Apts, 8/37, Millers Road, Benson Town, Bangalore - 560046. Karnataka. India.
+  profile_photo: assets/images/profile-300x259.jpg
+  phone: +91-984-554-3293
+  email: contact@mattseemon.in
+  twitterid: mathewseemon
+  socials:
+    - label: facebook
+      url: https://www.facebook.com/matt.seemon/
+      icon: fa-facebook
+    - lable: googleplus
+      url: https://aboutme.google.com/b/104023293305688557237/
+      icon: fa-google-plus
+    - label: instagram
+      url: https://www.instagram.com/mathew_seemon/?hl=en
+      icon: fa-instagram
+    - label: linkedin
+      url: https://www.linkedin.com/in/mathewseemon/
+      icon: fa-linkedin
+    - label: twitter
+      url: https://twitter.com/mathewseemon
+      icon: fa-twitter
+    - label: github
+      url: https://github.com/mattseemon
+      icon: fa-github
+  description: > # this means to ignore newlines until "baseurl:"
+    With a 18-year track record in the IT industry and a focus on achieving excellence in everything he does, 
+    Matt is now making a foray into the area of showbiz as well! He decided to take his 
+    passion for music and public speaking to the next level by making a paradigm shift 
+    to the entertainment industry in 2014 and hasn’t looked back ever since. 
+
+features:
+  enable_comments: true
+  enable_social_share: true
+  enable_site_search: false
+
+general:
+  avatar: 'assets/images/avatar.png'
+  repository : "mattseemon/mattseemon.in"
+
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
+
+permalink: /blog/:categories/:year/:month/:day/:title.html
+
+# Pagination Settings
+paginate: 3
+paginate_path: "blog/page:num/"
+
+# Google Maps Integration
+gmaps_key: AIzaSyA2yt0AHaHV6ddBxd8Rc4RhFkIjZeW75HA
+
+# reCaptcha Keys
+reCaptcha:
+  siteKey: "6LdTlR4UAAAAALp5CLPajIhVb9nntWbCUJSxuQCs"
+  secret: "S1/TSBPEzYivfkJ7yeMQvDZoghK7PogFUGLOKVzpesRwzzw6yLPaqP1YNHreUENCAP4dkS5GibIsdx5KAfOFwmpQFG4rx6VLjy1xmxcBxksBniEvS9HdRJ3Knyeh+YYumraT2aahSUFtGlFHftFB1saidD/EJk2p5JadIiLk/lY="
+
+# staticman Integration
+staticman:
+  branch: "master"
+
+# Build settings
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jemoji
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+include:
+  - _pages
