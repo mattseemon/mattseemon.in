@@ -22,7 +22,7 @@ heading: Blog
 			<span>
 				<i class="fa fa-folder-open" style="color:red;"></i>
 				{% for category in post.categories %}
-				<a href="{{ site.category_page }}#{{ tag | slugify }}">
+				<a href="{{ site.category_page | absolute_url }}#{{ category | slugify }}">
 					{{ category | slugify }}
 				</a>
 				{% unless forloop.last %}, {% endunless %}
@@ -33,7 +33,7 @@ heading: Blog
 			<span class="post-tags">
 				<i class="fa fa-tags" style="color:red;"></i>
 				{% for tag in post.tags  %}
-				<a href="{{ site.tag_page }}#{{ tag | slugify }}">
+				<a href="{{ site.tag_page | absolute_url }}#{{ tag | slugify }}">
 					{{ tag }}
 				</a>
 				{% unless forloop.last %}, {% endunless %}
@@ -42,7 +42,7 @@ heading: Blog
 			{% endif %} | 
 			<span class="post-link">
                 <i class="fa fa-comments" style="color: red;"></i>
-			    <a href="{{ post.url | relative_url }}#comments">
+			    <a href="{{ post.url | absolute_url }}#comments">
 				
 				{{ site.data.comments[post.slug] | size }}
 				comment{% if site.data.comments[post.slug].size != 1 %}s{% endif %}

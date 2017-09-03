@@ -1,7 +1,8 @@
 <!-- Commments -->
 {% if site.general.repository and site.staticman.branch %}
+    <div id="comments">
     {% if site.data.comments[page.slug] %}
-        <div id="comments">
+        
             <div>
                 <h3><span><i class="fa fa-comments"></i></span>
                     {% if site.data.comments[page.slug].size > 1 %}
@@ -31,9 +32,10 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        </div>
+        
     {% endif %}
-
+    </div>
+    
     {% unless page.comments_locked == true %}
     <div id="respond">
         <div>
