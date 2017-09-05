@@ -17,7 +17,7 @@ Finally after more than two years, we are finally here. **So where is here you m
 
 Well, honestly this goes back at least six to seven years. Having worked at a few global IT firms for over 10 years, I was seriously contemplating my choices in life, career, etc.
 
-This eventually led me to trying out different things I had over the year grown interested in. This lead to a journey of self discovery for me. In the last 5 years, I have tried quite a few new things.
+This eventually led me to trying out different things, I had, over the year grown interested in. This led to a journey of self discovery for me. In the last 5 years, I have tried quite a few new things.
 
  * Started doing Voice-Overs
  * Started hosting Karaoke

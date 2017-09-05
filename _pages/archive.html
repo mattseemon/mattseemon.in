@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: page
 title: Blog - Archives
 permalink: /blog/archive/
 sitemap:
@@ -7,15 +7,19 @@ sitemap:
   changefreq: weekly
   priority: 0.8
 ---
-
+<div class="row">
+        
 {% for post in site.posts %}
     {% assign currentDate = post.date | date: "%Y" %}
     {% if currentDate != myDate %}
-        {% unless forloop.first %}</ul>{% endunless %}
-        <h2>{{ currentDate }}</h2>
+        {% unless forloop.first %}</ul></div>{% endunless %}
+        <div class="col-sm-6">
+        <h2><a id="{{ currentDate }}"></a>{{ currentDate }}</h2>
         <ul>
         {% assign myDate = currentDate %}
     {% endif %}
     <li><a href="{{ post.url }}"><span>{{ post.date | date: "%B %-d, %Y" }}</span> - {{ post.title }}</a></li>
-    {% if forloop.last %}</ul>{% endif %}
+    {% if forloop.last %}</ul></div>{% endif %}
 {% endfor %}
+</div>
+</div>
