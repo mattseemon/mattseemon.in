@@ -7,6 +7,11 @@ script: "./script/cibuild"
 branches:
   only:
   - master
+
+addons:
+  apt:
+    packages:
+    - sshpass
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
