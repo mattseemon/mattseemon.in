@@ -4,3 +4,4 @@ _site
 .vscode
 deploy_rsa
 deploy_rsa.ppk
+.DS_Store
