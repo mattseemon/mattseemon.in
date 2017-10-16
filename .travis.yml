@@ -15,7 +15,7 @@ addons:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-sudo: false
+sudo: true
 addons:
   ssh-known-servers: mattseemon.in
 before_deploy:
