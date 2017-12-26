@@ -8,7 +8,7 @@ author:
   web: https://mattseemon.in
 sitemap:
   lastmod: 2017-05-08
-comments_locked: true
+comments_locked: false
 categories: [general]
 tags: [welcome, ramblings]
 ---
