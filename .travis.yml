@@ -2,7 +2,6 @@ language: ruby
 rvm:
 - 2.3.3
 before_script:
-- sudo apt-get install -qq sshpass
 - chmod +x ./script/cibuild
 script: "./script/cibuild"
 branches:
@@ -19,10 +18,10 @@ before_deploy:
   -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
-- sshpass -p '' ssh-add /tmp/deploy_rsa
+- ssh-add /tmp/deploy_rsa
 deploy:
   provider: script
   skip_cleanup: true
-  script: sshpass -p '' rsync -r --delete-after --quiet _site/ mattseemon@mattseemon.in:~/public_html
+  script: rsync -r --delete-after --quiet _site/ mattseemon@mattseemon.in:~/public_html
   on:
     branch: master
