@@ -9,7 +9,7 @@ branches:
   only:
   - master
 addons:
-  ssh-known-servers: mattseemon.in
+  ssh_known_hosts: mattseemon.in
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
