@@ -38,18 +38,23 @@
     window.cookieconsent.initialise({
     "palette": {
         "popup": {
-        "background": "red",
-        "text": "#ffffff"
-        },
-        "button": {
-        "background": "transparent",
-        "text": "#ffffff",
-        "border": "#ffffff"
-        }
+            "background": "#f8f8f8",
+            "text": "#333"
+          },
+          "button": {
+            "background": "transparent",
+            "text": "red",
+            "border": "red"
+          }
     },
     "position": "bottom-right",
     "content": {
         "href": "{{ site.url }}/privacy"
+    },
+    theme: "classic",
+    elements: {
+      messagelink: '<span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website.  <a aria-label="learn more about cookies" tabindex="0" class="cc-link" href="{{ site.url }}/privacy" rel="noopener" target="_blank">Learn more</a></span>',
+        close: '<span aria-label="dismiss cookie message" tabindex="0" class="cc-close">Close</span>',
     }
     })});
     </script>
