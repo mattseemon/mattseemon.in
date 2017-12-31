@@ -28,12 +28,13 @@ Services offered:
  
 ## Karaoke Jockey
 
-A regular, friendly face at Bangalore’s karaoke scene, , Matt has combined his rich voice and presentation skills with his passion for music and singing by hosting karaoke nights  at multiple venues in Bangalore. 
+A regular, friendly face at Bangalore’s karaoke scene, Matt has combined his rich voice and presentation skills with his passion for music and singing by hosting karaoke nights at multiple venues in Bangalore. You can currently catch him every Wednesday nights at Boozers, Indiranagar 100ft Road.
  
 Apart from a huge collection of karaoke tracks spread across various genres in English, Matt also  has an assortment of Bollywood karaoke tracks on offer. 
  
 A few venues where Matt has previously hosted karaoke events include:
  * Xtreme Sports Bar, Bannerghatta Road
+ * Xtreme Sports Bar, Indiranagar
  * White Elephant, 100ft Road, Indiranagar
  * The Palazzo, National Games Village
  * The United Sports Bar and Grill, Whitefield
@@ -60,8 +61,9 @@ Services offered:
  * Conferences and Seminars
 
 ## Novice Actor
-During his spare time, Matt likes honing his acting skills in local theatre. He recently played the character of Lord Montague in a production of William Shakespeare's Romeo and Juliet.
+During his spare time, Matt likes honing his acting skills in local theatre and short films. He recently played the character of Lord Montague in a production of William Shakespeare's Romeo and Juliet.
 
+### Plays
 <div class="panel panel-default">
     <div class="panel-heading">Credits</div>
     <table class="table table-striped table-bordered">
@@ -79,7 +81,7 @@ During his spare time, Matt likes honing his acting skills in local theatre. He 
         {% for play in sorted_plays %}
             <tr>
                 <td>{{ play.year }}</td>
-                <td><a href="{{ play.production_website }}" alt="{{ play.production }}" target="_blank" rel="noopener">{{ play.production }}</a> - <a href="{{ play.play_website }}" alt="{{ play.title }}" target="blank">{{ play.title }}</a></td>
+                <td><a href="{{ play.production_website }}" alt="{{ play.production }}" target="_blank" rel="noopener">{{ play.production }}</a> - <a href="{{ play.play_website }}" alt="{{ play.title }}" target="blank" rel="noopener">{{ play.title }}</a></td>
                 <td>{{ play.character }}</td>
                 <td>{{ play.playwright }}</td>
                 <td><a href="{{ play.venue_website }}" alt="{{ play.venue }}" target="_blank" rel="noopener">{{ play.venue }}</a></td>
@@ -88,5 +90,3 @@ During his spare time, Matt likes honing his acting skills in local theatre. He 
         </tbody>
     </table>
 </div>
-
-{% assign social = site.contact.socials | where:'label', 'github' %}
