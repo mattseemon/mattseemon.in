@@ -93,6 +93,12 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - deploy_rsa.enc
+  - LICENSE
+  - README.md
+  - deploy_rsa
+  - deploy_rsa.ppk
+  - deploy_rsa.pub
 
 include:
   - _pages

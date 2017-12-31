@@ -1,3 +1,7 @@
+---
+layout: none
+permalink: .htaccess
+---
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
