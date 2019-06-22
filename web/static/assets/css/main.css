@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Lato|Merriweather|Montserrat|Quicksand&display=swap');
+
+:root {
+    --accent: #C60021;
+    --primary-color: #E3E3E3;
+    --secondary-color: #F6F6F8;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+}
+
+/* Header styles */
+.navbar {
+    border-top: solid var(--accent) 2px;
+}
+
+.navbar .nav-item {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 30px;
+}
+
+.navbar .nav-item.active .nav-link
+.navbar .nav-item:focus .nav-link,
+.navbar .nav-item:hover .nav-link {
+    text-align: center;
+    color: var(--accent);
+}
+
+.navbar-collapse {
+    height: 100vh;
+    vertical-align: middle;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:hover {
+    color: var(--accent)    ;
+}
+
+.nav-tabs {
+    border-bottom: solid var(--accent) 1px;
+    margin-bottom: 15px;
+}
+
+.nav-tabs .nav-item {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+}
+
+.nav-tabs .nav-item .nav-link {
+    border-radius: 0px;
+}
+
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+    border-color: var(--accent) var(--accent) white var(--accent);
+}
+
+.nav-tabs .nav-link:focus, 
+.nav-tabs .nav-link:hover {
+    border-color: var(--accent) var(--accent) var(--accent) var(--accent);
+    background-color: var(--accent);
+    color: white !important;
+}
+
+/* Main layout style */
+main {
+    margin-top: 100px;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: normal;
+}
+
+
+/* Intro page styles */
+.intro {
+    padding: 120px 0 120px 0;
+}
+
+.intro h1 {
+    font-size: 60px;
+    padding: 40px 0;
+}
+
+.intro h2  {
+    font-size: 45px;
+    text-decoration: underline;
+    padding: 10px 0;
+}
+
+.bio_summary {
+    font-size: 26px;
+    text-align: justify;
+}
+
+/* Page styles */
+
+.pageHeading {
+    padding: 120px 0 60px 0;
+}
+
+.pageHeading h1 {
+    font-size: 60px;
+    padding: 40px 0;
+}
+
+.pageHeading h2 {
+    font-size: 40px;
+}
+
+.pageContent {
+    font-size: 22px;
+    padding: 20px 0;
+    text-align: justify;
+}
+
+.pageDivider {
+    width: 100px;
+    height: 3px;
+    background-color: var(--accent);
+    margin-top: 30px;
+}
+
+.pageAnnotation {
+    padding: 20px 0 0 0;
+    border-top: solid var(--accent) 1px;
+    font-size: 16px;
+}
+
+.pageContent table {
+    text-align: left;
+}
+
+/* Button styles */
+.btn-outline-primary, .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited {
+    border-radius: 0px;
+    border: solid var(--primary-color) 1px;
+    margin-right: 2px;
+    text-transform: uppercase;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited{
+    background-color: var(--accent) !important;
+}
+
+.alert {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+}
+
+/* Footer styles */
+footer {
+    position: relative;
+    padding: 50px 0;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+footer .copy {
+    color: #a3a3a3;
+    height: 40px;
+    line-height: 40px;
+}
+
+@media (min-width: 993px) {
+    footer {
+        text-align: left;
+    }
+    footer .copy {
+        margin-bottom: 0;
+    }
+
+    footer .social {
+        text-align: right;
+    }
+}
+
+.social .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary:visited {
+    border: solid var(--primary-color) 0px;
+}
+
+.credit.btn-outline-primary{
+    color: var(--accent) !important;
+}
+
+.credit.btn-outline-primary:hover{
+    color: white !important;
+}
+
+.btn-outline-primary{
+    color: var(--accent);
+}
+
+.input-group-text {
+    border-color: var(--primary-color);
+}
+
+.form-control{
+    border-color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input-group>.input-group-append>.btn {
+    color: var(--accent);
+}
+
+.input-group>.input-group-append>.btn:hover {
+    color:white;
+}

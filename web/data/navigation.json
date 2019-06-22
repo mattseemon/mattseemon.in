@@ -1,0 +1,9 @@
+{
+    "navigation" : {
+        "logo" : "/static/assets/images/logo-72.png",
+        "menus" : [
+            { "id" : "menu-home", "label" : "Home", "url" : "/" },
+            { "id" : "menu-now", "label" : "Now", "url" : "/now" }
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "mattseemon.in",
+  "version": "2.0.0",
+  "description": "Source for my personal site, portfolio and blog. (https://mattseemon.in)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattseemon/mattseemon.in.git"
+  },
+  "author": "Matt Seemon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattseemon/mattseemon.in/issues"
+  },
+  "homepage": "https://github.com/mattseemon/mattseemon.in#readme",
+  "private": true,
+  "workspaces": [ "web" ]
+}
