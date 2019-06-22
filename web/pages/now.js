@@ -15,14 +15,17 @@ export default class Now extends React.Component {
         return (
             <Page title={ this.state.title } subTitle={ this.state.subTitle }>
                 <div className="pageContent">
-                    <p>So, I recently moved to Goa from Bangalore. I was done with being sick most of the year <sup>(allergies)</sup> and dealing with the crazy traffic.</p>
+                    <p>Here's what is happening currently in my life.</p>
                     <ul>
-                        <li>Recently moved to Goa, India.</li>
-                        <li>Spending most of my time setting up my new place.</li>
-                        <li>Waiting to get my dogs (Pixie and Dust) here.</li>
+                        <li>Moved to Goa from Bangalore in March, 2019. I was done with being sick most of the year <sup>(allergies)</sup> and dealing with the crazy traffic.</li>
+                        <li>Mostly spending my time setting up my new place.</li>
+                        <li>Waiting to get my kids, Pixie and Dust to join me here. Missing them terribly.</li>
                         <li>Enjoying the Monsoons properly for the first time in years.</li>
                         <li>And finally, drinking a lot of beer on the beach.</li>
                     </ul>
+                    <div class="text-center">
+                        <img src="../static/assets/images/pixie_dust/pixie_dust.jpg" className="img-fluid rounded-circle border border-secondary" width="512"/>
+                    </div>
                 </div>
                 <div className="pageAnnotation">
                     <p><em>Inspired by <a href="https://sivers.org/now" target="_blank">Derek Sivers’</a> <a href="http://nownownow.com/" target="_blank">now page</a>  project.</em> <br />
