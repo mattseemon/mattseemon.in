@@ -1,0 +1,35 @@
+{
+  "name": "@mattseemon.in/web",
+  "version": "2.0.0",
+  "description": "Source for my personal site, portfolio & blog. (https://mattseemon.in)",
+  "main": "index.js",
+  "author": "Matt Seemon",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "matt-seemon",
+    "mattseemon",
+    "personal",
+    "personal-website",
+    "pws",
+    "blog",
+    "karaoke",
+    "voice-over",
+    "vo",
+    "actor",
+    "novice-actor",
+    "theater-artist",
+    "nextjs",
+    "bootstrap",
+    "minimal"
+  ],
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-html-parser": "^2.0.2",
+    "react-typed": "^1.1.2",
+    "reactstrap": "^8.0.0"
+  }
+}

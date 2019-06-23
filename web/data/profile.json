@@ -1,0 +1,21 @@
+{
+    "profile" : {
+        "firstName" : "Matt",
+        "lastName": "Seemon",
+        "summary" : "With over 15 years of experience in the IT industry under his belt and a focus on achieving excellence in everything he does, Matt decided he wanted to explore his creative/artistic side. He decided to take his passion for music and public speaking to the next level by making a paradigm shift to the entertainment industry in 2014 and hasn’t looked back ever since.",
+        "labels" : [ "Voice Over Artist", "Karaoke Jockey", "Novice Actor", "Compère", "IT Enthusiast" ],
+        "contact" : {
+            "email" : "contact@mattseemon.in",
+            "address" : "House No 48/C, Colva Beach Rd, Colva, GOA 403708, India",
+            "mobile" : "+91 984 554 3293"
+        },
+        "socials" : [
+            { "id" : "social-facebook", "url" : "https://www.facebook.com/matt.seemon", "icon" : "fab fa-facebook-f fa-fw", "title" : "Follow me on facebook"},
+            { "id" : "social-twitter", "url" : "https://twitter.com/mathewseemon", "icon" : "fab fa-twitter fa-fw", "title" : "Follow me on twitter"},
+            { "id" : "social-instagram", "url" : "https://www.instagram.com/matt_the_kj/", "icon" : "fab fa-instagram fa-fw", "title" : "Follow me on instagram"},
+            { "id" : "social-linkedin", "url" : "https://www.linkedin.com/in/mathewseemon/", "icon" : "fab fa-linkedin-in", "title" : "Follow me on linkedin"},
+            { "id" : "social-github", "url" : "https://github.com/mattseemon/", "icon" : "fab fa-github fa-fw", "title" : "View my projects on github"}
+        ],
+        "copyright" : "&copy; Copyright 2019, Matt Seemon. All rights reserved."
+    }
+}
