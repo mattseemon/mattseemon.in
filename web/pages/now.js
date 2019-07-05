@@ -1,35 +1,30 @@
 import Page from '../components/layouts/page'
+import matter from 'gray-matter';
 import React from 'react';
+import ReactMarkdown from 'react-markdown/with-html';
+import { GetFormattedDate } from '../lib/utils';
 
 export default class Now extends React.Component {
     constructor(props) {
         super(props);
+    }
 
-        this.state = {
-            title: "Now",
-            subTitle: "Here's what I'm upto!"
-        }
+    static async getInitialProps({ req }) {
+        const post = await require(`../content/now.md`)
+        const document = matter(post.default);
+        
+        return{ ...document };
     }
 
     render() {
         return (
-            <Page title={ this.state.title } subTitle={ this.state.subTitle }>
+            <Page title={ this.props.data.title } subTitle={ this.props.data.subTitle }>
                 <div className="pageContent">
-                    <p>Here's what is happening currently in my life.</p>
-                    <ul>
-                        <li>Moved to Goa from Bangalore in March, 2019. I was done with being sick most of the year <sup>(allergies)</sup> and dealing with the crazy traffic.</li>
-                        <li>Mostly spending my time setting up my new place.</li>
-                        <li>Waiting to get my kids, Pixie and Dust to join me here. Missing them terribly.</li>
-                        <li>Enjoying the Monsoons properly for the first time in years.</li>
-                        <li>And finally, drinking a lot of beer on the beach.</li>
-                    </ul>
-                    <div class="text-center">
-                        <img src="../static/assets/images/pixie_dust/pixie_dust.jpg" className="img-fluid rounded-circle border border-secondary" width="512"/>
-                    </div>
+                    <ReactMarkdown source={ this.props.content } escapeHtml={ false }/>
                 </div>
                 <div className="pageAnnotation">
                     <p><em>Inspired by <a href="https://sivers.org/now" target="_blank">Derek Sivers’</a> <a href="http://nownownow.com/" target="_blank">now page</a>  project.</em> <br />
-                    Last updated on <strong>22 June 2019</strong></p>
+                    Last updated on <strong>{ GetFormattedDate(this.props.data.lastUpdated) }</strong></p>
                 </div>
             </Page>
         );

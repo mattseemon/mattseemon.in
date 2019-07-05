@@ -11,7 +11,8 @@ export default class Page extends React.Component {
 
         this.state = {
             title: props.title,
-            subTitle: props.subTitle
+            subTitle: props.subTitle,
+            date: props.date
         }
     }
 
@@ -24,7 +25,8 @@ export default class Page extends React.Component {
                     <Container>
                         <div className="pageHeading">
                             <h1>{ this.state.title }</h1>
-                            <h2>{this.state.subTitle}</h2>
+                            <h2>{ this.state.subTitle }</h2>
+                            <p>{ this.state.date }</p>
                             <div className="pageDivider" />
                         </div>
                         { this.props.children }

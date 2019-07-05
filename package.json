@@ -13,5 +13,5 @@
   },
   "homepage": "https://github.com/mattseemon/mattseemon.in#readme",
   "private": true,
-  "workspaces": [ "web" ]
+  "workspaces" : [ "api", "web" ]
 }

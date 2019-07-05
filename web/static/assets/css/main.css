@@ -152,6 +152,48 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--accent) !important;
 }
 
+/* Table styles */
+.table {
+    font-size: 16px;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: var(--accent);
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #fff;
+    background-color: var(--accent);
+    border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: var(--accent);
+    border: 1px solid #dee2e6;
+}
+
+/* Alert style */
 .alert {
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
@@ -215,4 +257,8 @@ footer .copy {
 
 .input-group>.input-group-append>.btn:hover {
     color:white;
+}
+
+.modal-footer {
+    justify-content: stretch;
 }

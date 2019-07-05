@@ -26,13 +26,13 @@ export default class Header extends React.Component {
                         <NavbarBrand href="/">
                             <img src={ this.state.navigation.logo } />
                         </NavbarBrand>
-                        <NavbarToggler onClick={this.toggleMenu}>
+                        <NavbarToggler onClick={ this.toggleMenu }>
                             <i className="fas fa-bars fa-2x open"></i>
                         </NavbarToggler>
-                        <Collapse isOpen={this.state.isOpen} navbar className="align-middle">
+                        <Collapse isOpen={ this.state.isOpen } navbar className="align-middle">
                             <Nav className="ml-auto" navbar>
                                 { this.state.navigation.menus.map(function(menu) {
-                                    return <NavItem key={menu.label}><NavLink href={menu.url}>{menu.label}</NavLink></NavItem>;
+                                    return <NavItem key={ menu.id }><NavLink href={ menu.url }>{ menu.label }</NavLink></NavItem>;
                                 })}
                             </Nav>
                         </Collapse>
