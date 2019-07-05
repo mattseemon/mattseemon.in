@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: mattseemon/mattseemon.in
+publish_mode: editorial_workflow
+media_folder: static/assets/images
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string"}
+      - { label: "Sub-Title", name: "subTitle", widget: "string" }
+      - { label: "Last updated", name: "lastUpdated", widget: "datetime" }
+      - { label: "Credits", name: "credit", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown"}
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string"}
+      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown"}
+  - name: "writing"
+    label: "Writing"
+    folder: "content/writing"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string"}
+      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown"}

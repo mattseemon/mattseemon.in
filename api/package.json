@@ -1,0 +1,13 @@
+{
+  "name": "@mattseemon.in/api",
+  "version": "2.0.0",
+  "description": "Backend API's used by mattseemon.in website.",
+  "main": "index.js",
+  "author": "Matt Seemon",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
+    "micro": "^9.3.4"
+  }
+}

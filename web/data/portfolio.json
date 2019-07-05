@@ -1,0 +1,39 @@
+{
+    "portfolio" :{
+        "plays" : [
+            { 
+                "year": 2015, 
+                "title": "Murder in the first", 
+                "character": "Mr. Henkin", 
+                "playwright": "Dan Gordon", 
+                "production": "Quiver Productions", 
+                "venue": "Alliance française de Bangalore", 
+                "playUrl": "https://www.playscripts.com/play/2680", 
+                "productionUrl": "https://www.facebook.com/QuiverProductionsTheatre/", 
+                "venueUrl": "http://bangalore.afindia.org/" 
+            }, {
+                "year": 2016,
+                "title": "William Shakespeare's Romeo and Juliet", 
+                "character": "Lord Montague", 
+                "playwright": "William Shakespeare", 
+                "production": "Quiver Productions",
+                "venue": "Jagriti Theatre", 
+                "playUrl": "https://en.wikipedia.org/wiki/Romeo_and_Juliet", 
+                "productionUrl": "https://www.facebook.com/QuiverProductionsTheatre/", 
+                "venueUrl": "http://www.jagrititheatre.com/"
+            }
+        ],
+        "shortFilms" : [
+            {
+                "year": 2018,
+                "title": "Spiral of Silence",
+                "character" : "Shekar",
+                "writer": "Arunkumar Deivanayagam",
+                "director" : "Arunkumar Deivanayagam",
+                "production" : "Capture Crew Films",
+                "filmUrl": "https://www.youtube.com/watch?v=o71oKKVyw0Q",
+                "productionUrl": "https://www.facebook.com/capturecrew/"
+            }
+        ]
+    }
+}

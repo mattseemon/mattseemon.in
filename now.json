@@ -2,12 +2,17 @@
     "version" : 2,
     "name": "mattseemon.in",
     "builds": [
-        { "src": "web/package.json", "use": "@now/next" }
+        { "src": "web/package.json", "use": "@now/next" },
+        { "src": "api/**/*.js", "use": "@now/node"}
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/web/$1"
-        }
-    ]
+        { "src": "/api/contact", "dest": "/api/src/contact.js" },
+        { "src": "/privacy", "dest": "/web/page?id=privacy" },
+        { "src": "/terms", "dest": "/web/page?id=terms" },
+        { "src": "/(.*)", "dest": "/web/$1" }
+    ],
+    "alias": [ "mattseemon.com" ],
+    "env": {
+        "SEND_GRID_API_KEY": "@SEND_GRID_API_KEY"
+    }
 }
