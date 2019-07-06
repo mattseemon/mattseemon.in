@@ -13,6 +13,6 @@
     ],
     "alias": [ "mattseemon.com" ],
     "env": {
-        "SEND_GRID_API_KEY": "@SEND_GRID_API_KEY"
+        "SEND_GRID_API_KEY": "@send_grid_api_key"
     }
 }
