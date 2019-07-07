@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@sendgrid/mail": "^6.4.0",
+    "mailgun-js": "^0.22.0",
     "micro": "^9.3.4"
   }
 }
