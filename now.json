@@ -13,6 +13,10 @@
     ],
     "alias": [ "mattseemon.com" ],
     "env": {
-        "SEND_GRID_API_KEY": "@send_grid_api_key"
+        "MAILGUN_API_KEY": "@mailgun_api_key",
+        "MAILGUN_API_BASE_URL": "@mailgun_api_base_url",
+        "MAILGUN_DOMAIN": "@mailgun_domain",
+
+        "BASE_URL" : "mattseemon.com"
     }
 }
