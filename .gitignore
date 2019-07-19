@@ -6,3 +6,4 @@ NOTES
 .log
 *.log
 .env
+dev.cmd
