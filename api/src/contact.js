@@ -1,5 +1,7 @@
 const { json } = require('micro');
 const mailgun = require('mailgun-js');
+const request = require('request');
+const dateFormat = require('dateformat');
 
 module.exports = async (req, res) => {
     const error = (status, err) => {
@@ -36,6 +38,37 @@ module.exports = async (req, res) => {
         'v:name': body.contact.Name
     };
 
+    var timeStamp = dateFormat(new Date(body.contact.Received), 'isoUtcDateTime');
+
+    request.post({
+        "headers": { "content-type": "application/json" },
+        "url": process.env.FIREBASE_POST_CONTACT_URL,
+        "body": JSON.stringify({
+            "fields": {
+                "Name": {
+                    "stringValue": body.contact.Name
+                },
+                "Email": {
+                    "stringValue": body.contact.Email
+                },
+                "Message": {
+                    "stringValue": body.contact.Message 
+                },
+                "Source": {
+                    "stringValue": body.contact.Source
+                },
+                "Recieved": {
+                    "timestampValue": timeStamp
+                }
+            }
+        })
+    }, (error, response, body) => {
+        if(error) {
+            console.log(error);
+            return;
+        }
+    });
+
     emailService.messages().send(mailNotification)
         .then(function(result) {
             return emailService.messages().send(mailAcknowledgement);
@@ -47,13 +80,4 @@ module.exports = async (req, res) => {
         .catch((err) => {
             error(500, err.toString());
         });
-    /*
-    emailService.messages().send(emailOptions, (error, result) =>{
-        if(error) {
-            error(500, error.toString());
-        } else {
-            res.status = 200;
-            res.end();
-        }
-    });*/
 };

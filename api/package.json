@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "dateformat": "^3.0.3",
     "mailgun-js": "^0.22.0",
-    "micro": "^9.3.4"
+    "micro": "^9.3.4",
+    "request": "^2.88.0"
   }
 }

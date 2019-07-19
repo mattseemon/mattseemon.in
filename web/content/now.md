@@ -12,5 +12,5 @@ lastUpdated: 2019-06-28
  * And finally, drinking a lot of beer on the beach.
 
 <div class="text-center">
-    <img src="../static/assets/images/pixie_dust/pixie_dust.jpg" className="img-fluid rounded-circle border border-secondary" width="512" title="Pixie & Dust"/>
+    <img src="/static/assets/images/pixie_dust/pixie_dust.jpg" className="img-fluid rounded-circle border border-secondary" width="512" title="Pixie & Dust"/>
 </div>

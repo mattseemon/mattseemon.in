@@ -47,6 +47,7 @@ export default class Footer extends React.Component {
                                 { this.state.profile.socials.map((social) => {
                                     return <a key={ social.id } href={ social.url } className="btn btn-outline-primary" title={ social.title } target="_blank"><i className={ social.icon }></i></a>
                                 })}
+                                <a className="credit btn btn-outline-primary" title="Update user content" href="/static/admin/index.html" target="_blank" ><i className="fas fa-user-cog"></i></a>
                                 <a className="credit btn btn-outline-primary" title="View credits for this site" onClick={ this.toggleCredits }><i className="fas fa-heart"></i></a>
                                 <Modal isOpen={ this.state.showCredits } toggle={ this.toggleCredits } centered>
                                     <ModalHeader toggle={ this.toggleCredits }>Give credit where credit's due!</ModalHeader>

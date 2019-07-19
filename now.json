@@ -3,7 +3,7 @@
     "name": "mattseemon.in",
     "builds": [
         { "src": "web/package.json", "use": "@now/next" },
-        { "src": "api/**/*.js", "use": "@now/node"}
+        { "src": "api/**/*.js", "use": "@now/node@0.11.0"}
     ],
     "routes": [
         { "src": "/api/contact", "dest": "/api/src/contact.js" },
@@ -13,6 +13,8 @@
     ],
     "alias": [ "mattseemon.com" ],
     "env": {
+        "FIREBASE_POST_CONTACT_URL": "@firebase_post_contact_url",
+        
         "MAILGUN_API_KEY": "@mailgun_api_key",
         "MAILGUN_API_BASE_URL": "@mailgun_api_base_url",
         "MAILGUN_DOMAIN": "@mailgun_domain",
