@@ -4,10 +4,10 @@ import Typed from 'react-typed';
 import ProfileData from '../data/profile.json';
 
 const styleTitle = {
-    textTransform: "uppercase"
+    textTransform: 'uppercase'
 }
 const styleTitleEmphasis = {
-    color: "var(--accent)"
+    color: 'var(--accent)'
 }
 
 export default class Index extends React.Component {

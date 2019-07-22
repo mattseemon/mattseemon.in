@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, InputGroup, InputGroupAddon, Input, Alert } from 'reactstrap';
-import fetch from 'isomorphic-unfetch';
+import axios from 'axios';
 
 const styleIcon = {
     color: 'var(--accent)',
@@ -79,21 +79,14 @@ export default class ContactComponent extends React.Component {
         const contact = this.state.contact;
         contact.Received = Date.now();
         
-        fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ contact })
-        }).then((res) => {
-            if(res.status === 200) {
+        axios.post('api/contact', { contact })
+            .then((response) => {
                 this.setAlert('success');
-            } else {
+            })
+            .catch((error) => {
+                console.log(error);
                 this.setAlert('failed');
-            }
-        }, (error) => {
-            this.setAlert('failed');
-        });
+            })
     }
 
     onReset = () => {
