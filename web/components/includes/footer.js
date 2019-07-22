@@ -1,17 +1,17 @@
 import React from 'react';
-import ProfileData from '../../data/profile.json';
 import { Container, ModalFooter, Button, Row, Col } from 'reactstrap';
 import HtmlParser from 'react-html-parser';
 import Modal from 'reactstrap/lib/Modal';
 import ModalHeader from 'reactstrap/lib/ModalHeader';
 import ModalBody from 'reactstrap/lib/ModalBody';
+import ProfileData from '../../data/profile.json';
 
 const styleHeart = {
-    color: "red"
+    color: 'red'
 }
 
 const styleCredits = {
-    lineHeight: "40px"
+    lineHeight: '40px'
 }
 
 export default class Footer extends React.Component {
@@ -22,11 +22,9 @@ export default class Footer extends React.Component {
             profile : ProfileData.profile,
             showCredits: false
         }
-
-        this.toggleCredits = this.toggleCredits.bind(this);
     }
 
-    toggleCredits() {
+    toggleCredits = () => {
         this.setState(previousState => ({
             showCredits: !previousState.showCredits
         }));
@@ -36,13 +34,13 @@ export default class Footer extends React.Component {
         return (
             <footer>
                 <Container>
-                    <div className="row">
-                        <div className="col-lg-6">
+                    <Row>
+                        <Col lg="6">
                             <div className="copy">
                                 <p>{ HtmlParser(this.state.profile.copyright) }</p>
                             </div>
-                        </div>
-                        <div className="col-lg-6">
+                        </Col>
+                        <Col lg="6">
                             <div className="social">
                                 { this.state.profile.socials.map((social) => {
                                     return <a key={ social.id } href={ social.url } className="btn btn-outline-primary" title={ social.title } target="_blank"><i className={ social.icon }></i></a>
@@ -60,17 +58,17 @@ export default class Footer extends React.Component {
                                         </div>
                                     </ModalBody>
                                     <ModalFooter>
-                                        <div className="container pr-0 pl-0">
-                                            <div className="row">
-                                                <div className="col-8" style={ styleCredits }><p className="mb-0">Made with <i className="fas fa-heart" style={ styleHeart }></i> in Goa, India.</p></div>
-                                                <div className="col-4 text-right"><Button outline color="primary" onClick={ this.toggleCredits }>Close</Button></div>
-                                            </div>
-                                        </div>
+                                        <Container className="pr-0 pl-0">
+                                            <Row>
+                                                <Col xs="8" style={ styleCredits }><p className="mb-0">Made with <i className="fas fa-heart" style={ styleHeart }></i> in Goa, India.</p></Col>
+                                                <Col xs="4" className="text-right"><Button outline color="primary" onClick={ this.toggleCredits }>Close</Button></Col>
+                                            </Row>
+                                        </Container>
                                     </ModalFooter>
                                 </Modal>
                             </div>
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                 </Container>
             </footer>
         )

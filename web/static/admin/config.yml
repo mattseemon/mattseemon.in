@@ -3,6 +3,7 @@ backend:
   repo: mattseemon/mattseemon.in
   branch: master_v2
 publish_mode: editorial_workflow
+display_url: https://mattseemon.com
 media_folder: web/static/assets/images
 collections:
   - name: "pages"

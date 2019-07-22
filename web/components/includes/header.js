@@ -1,18 +1,17 @@
 import React from 'react';
 import { Collapse, Container, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import NavigationData from "../../data/navigation.json";
+import NavigationData from '../../data/navigation.json';
 
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.toggleMenu = this.toggleMenu.bind(this);
         this.state = {
             isOpen: false,
             navigation: NavigationData.navigation
         }
     }
 
-    toggleMenu() {
+    toggleMenu = () => {
         this.setState({
             isOpen: !this.state.isOpen,
         });

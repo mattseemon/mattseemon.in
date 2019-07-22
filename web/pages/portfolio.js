@@ -1,28 +1,30 @@
 import Page from '../components/layouts/page'
 import React from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
+import Table from 'reactstrap/lib/Table';
 import classnames from 'classnames';
-
 import PortfolioData from '../data/portfolio.json';
 
 const styleAnnotationIcon = {
-    color: "var(--accent)"
+    color: 'var(--accent)'
 }
 
 export default class Portfolio extends React.Component {
     constructor(props) {
         super(props);
-
-        this.switchTab = this.switchTab.bind(this);
         this.state = {
-            title: "Portfolio & Services",
-            subTitle: "What I do and offer!",
+            title: 'Portfolio & Services',
+            subTitle: 'What I do and offer!',
             activeTab: '1',
             portfolio: PortfolioData.portfolio
         }
     }
 
-    switchTab(tab) {
+    static async getInitialProps({ query }) {
+        return { }
+    }
+
+    switchTab = (tab) => {
         if(this.state.activeTab !== tab) {
             this.setState({
                 activeTab: tab
@@ -115,67 +117,63 @@ export default class Portfolio extends React.Component {
                                 <Col sm="12">
                                     <p>During his spare time, Matt likes honing his acting skills in local theatre and short films. He recently played the character of Lord Montague in a production of <b>William Shakespeare’s Romeo and Juliet</b> and acted in short film <b>Spiral of Silence</b>. which was nominated in numerous short film festivals around the world.</p>
                                     <h3 id="plays">Plays</h3>
-                                    <div className="panel panel-default">
-                                        <table className="table table-striped table-bordered">
-                                            <thead className="thead-inverse">
-                                                <tr>
-                                                    <th>Year</th>
-                                                    <th>Title</th>
-                                                    <th>Role</th>
-                                                    <th>Playwright</th>
-                                                    <th>Production</th>
-                                                    <th>Venue</th>
+                                    <Table striped bordered responsive>
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th>Year</th>
+                                                <th>Title</th>
+                                                <th>Role</th>
+                                                <th>Playwright</th>
+                                                <th>Production</th>
+                                                <th>Venue</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            { this.state.portfolio.plays
+                                                .sort((a, b) => {
+                                                    return b.year - a.year;
+                                                })
+                                                .map((play, index) => {
+                                                return <tr key={index}>
+                                                    <td>{ play.year }</td>
+                                                    <td>{ play.title } { play.playUrl ? <a href={ play.playUrl } target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
+                                                    <td>{ play.character }</td>
+                                                    <td>{ play.playwright }</td>
+                                                    <td>{ play.production } { play.productionUrl ? <a href={play.productionUrl} target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
+                                                    <td>{ play.venue } { play.venueUrl ? <a href={play.venueUrl} target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                { this.state.portfolio.plays
-                                                    .sort((a, b) => {
-                                                        return b.year - a.year;
-                                                    })
-                                                    .map((play, index) => {
-                                                    return <tr key={index}>
-                                                        <td>{ play.year }</td>
-                                                        <td>{ play.title } { play.playUrl ? <a href={ play.playUrl } target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
-                                                        <td>{ play.character }</td>
-                                                        <td>{ play.playwright }</td>
-                                                        <td>{ play.production } { play.productionUrl ? <a href={play.productionUrl} target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
-                                                        <td>{ play.venue } { play.venueUrl ? <a href={play.venueUrl} target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
-                                                    </tr>
-                                                })}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            })}
+                                        </tbody>
+                                    </Table>
                                     <h3 id="plays">Shot Films</h3>
-                                    <div className="panel panel-default">
-                                        <table className="table table-striped table-bordered">
-                                            <thead className="thead-inverse">
-                                                <tr>
-                                                    <th>Year</th>
-                                                    <th>Title</th>
-                                                    <th>Role</th>
-                                                    <th>Writer</th>
-                                                    <th>Director</th>
-                                                    <th>Production</th>
+                                    <Table striped bordered responsive>
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th>Year</th>
+                                                <th>Title</th>
+                                                <th>Role</th>
+                                                <th>Writer</th>
+                                                <th>Director</th>
+                                                <th>Production</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            { this.state.portfolio.shortFilms
+                                                .sort((a, b) => {
+                                                    return b.year - a.year;
+                                                })
+                                                .map((play, index) => {
+                                                return <tr key={index}>
+                                                    <td>{ play.year }</td>
+                                                    <td>{ play.title } { play.filmUrl ? <a href={ play.filmUrl } target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
+                                                    <td>{ play.character }</td>
+                                                    <td>{ play.writer }</td>
+                                                    <td>{ play.director }</td>
+                                                    <td>{ play.production } { play.productionUrl ? <a href={play.productionUrl} target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                { this.state.portfolio.shortFilms
-                                                    .sort((a, b) => {
-                                                        return b.year - a.year;
-                                                    })
-                                                    .map((play, index) => {
-                                                    return <tr key={index}>
-                                                        <td>{ play.year }</td>
-                                                        <td>{ play.title } { play.filmUrl ? <a href={ play.filmUrl } target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
-                                                        <td>{ play.character }</td>
-                                                        <td>{ play.writer }</td>
-                                                        <td>{ play.director }</td>
-                                                        <td>{ play.production } { play.productionUrl ? <a href={play.productionUrl} target="_blank" rel="noopener"><i className="fas fa-external-link-alt"></i></a> : '' }</td>
-                                                    </tr>
-                                                })}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            })}
+                                        </tbody>
+                                    </Table>
                                 </Col>
                             </Row>
                         </TabPane>

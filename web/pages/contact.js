@@ -1,6 +1,6 @@
 import Page from '../components/layouts/page'
 import React from 'react';
-import { Row, Col, Card } from 'reactstrap';
+import { Row, Col, Card, ListGroup, ListGroupItem } from 'reactstrap';
 import ProfileData from '../data/profile.json';
 import ContactForm from '../components/includes/contact';
 
@@ -19,6 +19,10 @@ export default class Contact extends React.Component {
         }
     }
 
+    static async getInitialProps({ query }) {
+        return { }
+    }
+
     render() {
         return (
             <Page title={ this.state.title } subTitle={ this.state.subTitle }>
@@ -30,28 +34,28 @@ export default class Contact extends React.Component {
                         </Col>
                         <Col lg="6" className="mb-0">
                             <Card className="mb-2 border-0">
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">
-                                        <div className="row pt-4 pb-4">
-                                            <div className="col-1">
+                                <ListGroup flush>
+                                    <ListGroupItem>
+                                        <Row className="pt-4 pb-4">
+                                            <Col xs="1">
                                                 <i className="fas fa-envelope" style={ styleIcon }></i>
-                                            </div>
-                                            <div className="col-11">
+                                            </Col>
+                                            <Col xs="11">
                                                 <a href={ "mailto:" + this.state.profile.contact.email } rel="noopener">{ this.state.profile.contact.email }</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="list-group-item">
-                                        <div className="row pt-4 pb-4">
-                                            <div className="col-1">
+                                            </Col>
+                                        </Row>
+                                    </ListGroupItem>
+                                    <ListGroupItem>
+                                        <Row className="pt-4 pb-4">
+                                            <Col xs="1">
                                                 <i className="fas fa-phone-alt" style={ styleIcon }></i>
-                                            </div>
-                                            <div className="col-11">
+                                            </Col>
+                                            <Col xs="11">
                                                 { this.state.profile.contact.mobile }
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                            </Col>
+                                        </Row>
+                                    </ListGroupItem>
+                                </ListGroup>
                             </Card>
                         </Col>
                     </Row>

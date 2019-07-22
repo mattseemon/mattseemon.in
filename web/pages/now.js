@@ -10,7 +10,7 @@ export default class Now extends React.Component {
     }
 
     static async getInitialProps({ req }) {
-        const post = await require(`../content/now.md`)
+        const post = await require('../content/now.md')
         const document = matter(post.default);
         
         return{ ...document };
