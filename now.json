@@ -9,9 +9,9 @@
         { "src": "/api/contact", "dest": "/api/src/contact.js" },
         { "src": "/privacy", "dest": "/web/page?id=privacy" },
         { "src": "/terms", "dest": "/web/page?id=terms" },
+        { "src": "/favicon.ico", "dest": "/web/static/favicon.ico"},
         { "src": "/(.*)", "dest": "/web/$1" }
     ],
-    "alias": [ "mattseemon.com" ],
     "env": {
         "FIREBASE_POST_CONTACT_URL": "@firebase_post_contact_url",
         
