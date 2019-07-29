@@ -8,25 +8,21 @@ import '../../static/assets/css/main.css';
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            title: props.title,
-            subTitle: props.subTitle,
-            date: props.date
-        }
     }
 
     render() {
+        let { title, subTitle, date } = this.props;
+
         return (
             <div>
-                <HeadContent title={ this.state.title } />
+                <HeadContent title={ title } />
                 <Header />
                 <main>
                     <Container>
                         <div className="pageHeading">
-                            <h1>{ this.state.title }</h1>
-                            <h2>{ this.state.subTitle }</h2>
-                            <p>{ this.state.date }</p>
+                            <h1>{ title }</h1>
+                            <h2>{ subTitle }</h2>
+                            <p>{ date }</p>
                             <div className="pageDivider" />
                         </div>
                         { this.props.children }

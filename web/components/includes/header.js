@@ -5,32 +5,30 @@ import NavigationData from '../../data/navigation.json';
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isOpen: false,
-            navigation: NavigationData.navigation
-        }
+
+        this.state = { isOpen: false, navigation: NavigationData.navigation };
     }
 
     toggleMenu = () => {
-        this.setState({
-            isOpen: !this.state.isOpen,
-        });
+        this.setState({ isOpen: !this.state.isOpen });
     }
 
     render() {
+        let { logo, menus } = this.state.navigation;
+
         return (
             <header>
                 <Navbar color="light" light className="fixed-top">
                     <Container>
                         <NavbarBrand href="/">
-                            <img src={ this.state.navigation.logo } />
+                            <img src={ logo } />
                         </NavbarBrand>
                         <NavbarToggler onClick={ this.toggleMenu }>
                             <i className="fas fa-bars fa-2x open"></i>
                         </NavbarToggler>
                         <Collapse isOpen={ this.state.isOpen } navbar className="align-middle">
                             <Nav className="ml-auto" navbar>
-                                { this.state.navigation.menus.map(function(menu) {
+                                { menus.map(function(menu) {
                                     return <NavItem key={ menu.id }><NavLink href={ menu.url }>{ menu.label }</NavLink></NavItem>;
                                 })}
                             </Nav>

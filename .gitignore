@@ -7,3 +7,5 @@ NOTES
 *.log
 .env
 dev.cmd
+.vscode/settings.json
+.vscode/launch.json
