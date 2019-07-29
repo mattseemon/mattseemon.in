@@ -11,23 +11,23 @@ export default class Index extends React.Component {
     }
 
     static async getInitialProps({ query }) {
-        console.log(query);
-
-        const post = await require(`../content/${query.id}.md`)
-        const document = matter(post.default);
+        let post = await require(`../content/${query.id}.md`)
+        let document = matter(post.default);
         
         return{ ...document };
     }
 
     render() {
+        let { title, lastUpdated, credit } = this.props.data;
+
         return (
-            <Page title={ this.props.data.title } >
+            <Page title={ title } >
                 <div className="pageContent">
                     <ReactMarkdown source={ this.props.content } />
                 </div>
                 <div className="pageAnnotation">
-                <p>Last updated on <strong>{ GetFormattedDate(this.props.data.lastUpdated) }</strong><br/>
-                    <em>{ this.props.data.credit }</em></p>
+                <p>Last updated on <strong>{ GetFormattedDate(lastUpdated) }</strong><br/>
+                    <em>{ credit }</em></p>
                 </div>
             </Page>
         );

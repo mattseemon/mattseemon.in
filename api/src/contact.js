@@ -1,83 +1,79 @@
-const { json } = require('micro');
+const axios = require('axios');
 const mailgun = require('mailgun-js');
-const request = require('request');
-const dateFormat = require('dateformat');
+const { FireStoreParser } = require('./firebase');
 
 module.exports = async (req, res) => {
-    const error = (status, err) => {
+    const logError = (status, err) => {
         console.log(err);
-        res.status = status || 500;
-        res.write(err);
-        res.end();
+        res.status(status || 500).send(err);
     };
+
     if (req.method !== 'POST') {
-        error(405, 'Method not allowed');
+        logError(405, 'Method not allowed');
         return;
     }
 
-    const body = await json(req);
+    let { name, email, message, source } = req.body.contact;
+
+    let body = {
+        'fields': {
+            'name': { 'stringValue': name },
+            'email': { 'stringValue': email },
+            'message': { 'stringValue': message },
+            'source': { 'stringValue': source },
+        }
+    };
+
+    if(!source) {
+        delete body.fields['source'];
+    }
+
+    axios.post(process.env.FIREBASE_POST_CONTACT_URL, { ...body })
+        .then((response) => {
+            let message = FireStoreParser(response.data);
+
+            sendMails(message);
+            
+            res.status(200).send();
+        })
+        .catch((error) => {
+            logError(500, error);
+        })
+};
+
+function sendMails(contact) {
     const emailService = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
     
-    const mailNotification = {
+    let { name, email, message, source } = contact.fields;
+
+    let notificationOptions = {
         from: 'Post Master <postmaster@mattseemon.in>',
         to: 'contact@mattseemon.in',
         subject: 'New contact request',
         template: 'contact-notification',
-        'v:name': body.contact.Name,
-        'v:email': body.contact.Email,
-        'v:message': body.contact.Message,
-        'v:source': body.contact.Source,
-        'v:time': new Date(body.contact.Received).toString()
+        'v:name': name,
+        'v:email': email,
+        'v:message': message,
+        'v:source': source,
+        'v:time': new Date(contact.createTime).toString()
     };
     
-    const mailAcknowledgement = {
+    let acknowledgementOptions = {
         from: 'Matt Seemon <contact@mattseemon.in>',
-        to: body.contact.Email,
+        to: email,
         subject: 'Thank you for contacting me',
         template: 'contact-acknowledgement',
-        'v:name': body.contact.Name
-    };
+        'v:name': name
+    };    
 
-    var timeStamp = dateFormat(new Date(body.contact.Received), 'isoUtcDateTime');
-
-    request.post({
-        "headers": { "content-type": "application/json" },
-        "url": process.env.FIREBASE_POST_CONTACT_URL,
-        "body": JSON.stringify({
-            "fields": {
-                "Name": {
-                    "stringValue": body.contact.Name
-                },
-                "Email": {
-                    "stringValue": body.contact.Email
-                },
-                "Message": {
-                    "stringValue": body.contact.Message 
-                },
-                "Source": {
-                    "stringValue": body.contact.Source
-                },
-                "Recieved": {
-                    "timestampValue": timeStamp
-                }
-            }
+    emailService.messages().send(notificationOptions)
+        .then(function(result) {
+            return emailService.messages().send(acknowledgementOptions);
         })
-    }, (error, response, body) => {
-        if(error) {
-            console.log(error);
+        .then(function(result) {
             return;
-        }
-    });
-
-    emailService.messages().send(mailNotification)
-        .then(function(result) {
-            return emailService.messages().send(mailAcknowledgement);
-        })
-        .then(function(result) {
-            res.status = 200;
-            res.end();
         })
         .catch((err) => {
             error(500, err.toString());
         });
-};
+}

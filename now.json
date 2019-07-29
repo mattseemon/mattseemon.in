@@ -7,18 +7,26 @@
     ],
     "routes": [
         { "src": "/api/contact", "dest": "/api/src/contact.js" },
+        { "src": "/api/comments/post", "dest": "/api/src/comments-post.js" },
+        { "src": "/api/comments/get", "dest": "/api/src/comments-get.js" },
         { "src": "/privacy", "dest": "/web/page?id=privacy" },
         { "src": "/terms", "dest": "/web/page?id=terms" },
         { "src": "/favicon.ico", "dest": "/web/static/favicon.ico"},
+        { "src": "\/blog\/([0-9]*$)", "dest": "/web/blog?page=$1"},
+        { "src": "\/blog\/((?!\\d+$).+$)", "dest": "/web/post?slug=$1"},
+        { "src": "\/writing\/([0-9]*$)", "dest": "/web/writing?page=$1"},
+        { "src": "\/writing\/((?!\\d+$).+$)", "dest": "/web/post?slug=$1"},
         { "src": "/(.*)", "dest": "/web/$1" }
     ],
     "env": {
         "FIREBASE_POST_CONTACT_URL": "@firebase_post_contact_url",
+        "FIREBASE_COMMENTS_URL": "@firebase_comments_url",
+        "FIREBASE_COMMENT_REPLIES_URL": "@firebase_comment_replies_url",
         
         "MAILGUN_API_KEY": "@mailgun_api_key",
         "MAILGUN_API_BASE_URL": "@mailgun_api_base_url",
         "MAILGUN_DOMAIN": "@mailgun_domain",
         
-        "BASE_URL" : "mattseemon.com"
+        "BASE_URL" : "mattseemon.in"
     }
 }

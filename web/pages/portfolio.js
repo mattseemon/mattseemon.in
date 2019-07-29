@@ -5,19 +5,12 @@ import Table from 'reactstrap/lib/Table';
 import classnames from 'classnames';
 import PortfolioData from '../data/portfolio.json';
 
-const styleAnnotationIcon = {
-    color: 'var(--accent)'
-}
+const styleAnnotationIcon = { color: 'var(--accent)' };
 
 export default class Portfolio extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            title: 'Portfolio & Services',
-            subTitle: 'What I do and offer!',
-            activeTab: '1',
-            portfolio: PortfolioData.portfolio
-        }
+        this.state = { title: 'Portfolio & Services', subTitle: 'What I do and offer!', activeTab: '1', portfolio: PortfolioData.portfolio }
     }
 
     static async getInitialProps({ query }) {
@@ -26,31 +19,31 @@ export default class Portfolio extends React.Component {
 
     switchTab = (tab) => {
         if(this.state.activeTab !== tab) {
-            this.setState({
-                activeTab: tab
-            });
+            this.setState({ activeTab: tab });
         }
     }
 
     render() {
+        let { title, subTitle, activeTab, portfolio } = this.state;
+        
         return (
-            <Page title={ this.state.title } subTitle={ this.state.subTitle }>
+            <Page title={ title } subTitle={ subTitle }>
                 <div className="pageContent">
                     <Nav tabs>
                         <NavItem>
-                            <NavLink className={ classnames({ active:this.state.activeTab === '1'}) } onClick={() => { this.switchTab('1'); }}>Voice-Over Artist</NavLink>
+                            <NavLink className={ classnames({ active:activeTab === '1'}) } onClick={() => { this.switchTab('1'); }}>Voice-Over Artist</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className={ classnames({ active:this.state.activeTab === '2'}) } onClick={() => { this.switchTab('2'); }}>Karaoke Jockey</NavLink>
+                            <NavLink className={ classnames({ active:activeTab === '2'}) } onClick={() => { this.switchTab('2'); }}>Karaoke Jockey</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className={ classnames({ active:this.state.activeTab === '3'}) } onClick={() => { this.switchTab('3'); }}>Compère</NavLink>
+                            <NavLink className={ classnames({ active:activeTab === '3'}) } onClick={() => { this.switchTab('3'); }}>Compère</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className={ classnames({ active:this.state.activeTab === '4'}) } onClick={() => { this.switchTab('4'); }}>Novice Actor</NavLink>
+                            <NavLink className={ classnames({ active:activeTab === '4'}) } onClick={() => { this.switchTab('4'); }}>Novice Actor</NavLink>
                         </NavItem>
                     </Nav>
-                    <TabContent activeTab={ this.state.activeTab }>
+                    <TabContent activeTab={ activeTab }>
                         <TabPane tabId="1">
                             <Row>
                                 <Col sm="12">
@@ -129,7 +122,7 @@ export default class Portfolio extends React.Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            { this.state.portfolio.plays
+                                            { portfolio.plays
                                                 .sort((a, b) => {
                                                     return b.year - a.year;
                                                 })
@@ -158,7 +151,7 @@ export default class Portfolio extends React.Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            { this.state.portfolio.shortFilms
+                                            { portfolio.shortFilms
                                                 .sort((a, b) => {
                                                     return b.year - a.year;
                                                 })

@@ -4,19 +4,13 @@ import { Row, Col, Card, ListGroup, ListGroupItem } from 'reactstrap';
 import ProfileData from '../data/profile.json';
 import ContactForm from '../components/includes/contact';
 
-const styleIcon = {
-    color: 'var(--accent)',
-}
+const styleIcon = { color: 'var(--accent)' };
 
 export default class Contact extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            title: 'Contact',
-            subTitle: 'Don\'t be a stranger!',
-            profile: ProfileData.profile,
-        }
+        this.state = { title: 'Contact', subTitle: 'Don\'t be a stranger!', profile: ProfileData.profile };
     }
 
     static async getInitialProps({ query }) {
@@ -24,8 +18,10 @@ export default class Contact extends React.Component {
     }
 
     render() {
+        let { title, subTitle, profile } = this.state;
+
         return (
-            <Page title={ this.state.title } subTitle={ this.state.subTitle }>
+            <Page title={ title } subTitle={ subTitle }>
                 <div className="pageContent">
                     <p>Thank you for your interest. If you have any questions about the services provided or just feel like getting in touch, you can fill up the form below and hit "Send message" or <strong style={ styleIcon }>go old school</strong>.</p>
                     <Row className="mt-5">
@@ -41,7 +37,7 @@ export default class Contact extends React.Component {
                                                 <i className="fas fa-envelope" style={ styleIcon }></i>
                                             </Col>
                                             <Col xs="11">
-                                                <a href={ "mailto:" + this.state.profile.contact.email } rel="noopener">{ this.state.profile.contact.email }</a>
+                                                <a href={ "mailto:" + profile.contact.email } rel="noopener">{ profile.contact.email }</a>
                                             </Col>
                                         </Row>
                                     </ListGroupItem>
@@ -51,7 +47,7 @@ export default class Contact extends React.Component {
                                                 <i className="fas fa-phone-alt" style={ styleIcon }></i>
                                             </Col>
                                             <Col xs="11">
-                                                { this.state.profile.contact.mobile }
+                                                { profile.contact.mobile }
                                             </Col>
                                         </Row>
                                     </ListGroupItem>

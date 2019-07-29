@@ -5,6 +5,8 @@
             { "id" : "menu-home", "label" : "Home", "url" : "/" },
             { "id" : "menu-now", "label" : "Now", "url" : "/now" },
             { "id" : "menu-portfolio", "label" : "Portfolio", "url" : "/portfolio" },
+            { "id" : "menu-blog", "label" : "Blog", "url" : "/blog" },
+            { "id" : "menu-writing", "label" : "Writing", "url" : "/writing" },
             { "id" : "menu-contact", "label" : "Contact", "url" : "/contact" }
         ]
     }
