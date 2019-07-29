@@ -12,30 +12,30 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string"}
-      - { label: "Sub-Title", name: "subTitle", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub-Title", name: "subTitle", widget: "string", required: false }
       - { label: "Last updated", name: "lastUpdated", widget: "datetime" }
-      - { label: "Credits", name: "credit", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown"}
+      - { label: "Credits", name: "credit", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "posts"
     label: "Blog Posts"
     folder: "web/content/posts"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string"}
-      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Allow Comments", name: "allowComments", widget: "boolean"}
-      - { label: "Body", name: "body", widget: "markdown"}
+      - { label: "Allow Comments", name: "allowComments", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "writing"
     label: "Writing"
     folder: "web/content/articles"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string"}
-      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Allow Comments", name: "allowComments", widget: "boolean"}
-      - { label: "Body", name: "body", widget: "markdown"}
+      - { label: "Allow Comments", name: "allowComments", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
