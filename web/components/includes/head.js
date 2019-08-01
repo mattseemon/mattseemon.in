@@ -5,7 +5,6 @@ const HeadContent = (props) =>(
         <title>Matt Seemon - { props.title }</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" key="viewport" />
-        <script src="https://kit.fontawesome.com/86f595f9c1.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
         <link rel="apple-touch-icon" sizes="57x57" href="/static/assets/favicon/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/static/assets/favicon/apple-icon-60x60.png" />
@@ -24,6 +23,7 @@ const HeadContent = (props) =>(
         <link rel="mask-icon" href="/static/assets/favicon/safari-pinned-tab.svg" color="#b91d47" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="msapplication-config" content="/static/browserconfig.xml"></meta>
+        <script src="https://kit.fontawesome.com/86f595f9c1.js"></script>
     </Head>
 );
 

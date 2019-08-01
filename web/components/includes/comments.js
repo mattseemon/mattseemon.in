@@ -22,7 +22,8 @@ export default class Comments extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/comments/get?slug=${ this.props.slug }`)
+        axios
+            .get(`/api/comments/get?slug=${ this.props.slug }`)
             .then((response) => {
                 this.setState({ ...response.data });
             })
@@ -87,7 +88,8 @@ export default class Comments extends React.Component {
         
         let slug = this.state.slug, comment = this.state.comment;
 
-        axios.post('/api/comments/post', { slug, comment })
+        axios
+            .post('/api/comments/post', { slug, comment })
             .then((response) => {    
                 this.setAlert('success');
                 axios.get(`/api/comments/get?slug=${ slug }`)
@@ -172,14 +174,17 @@ export default class Comments extends React.Component {
                             </div>
                         ) : (
                             <div>
-                                <div className="pageDivider mt-5" />
-                                <h2 className="mt-3">Comments are closed</h2>
-                                <p>If you have a question concerning the content of this page, please feel free to <a href="/contact">contact me</a>.</p>
+                                { (count > 0) && (
+                                    <div>
+                                        <div className="pageDivider mt-5" />
+                                        <h2 className="mt-3">Comments are closed</h2>
+                                        <p>If you have a question concerning the content of this page, please feel free to <a href="/contact">contact me</a>.</p>        
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
                 }
-                
             </div>
         );
     }
