@@ -3,7 +3,7 @@
     "name": "mattseemon.in",
     "builds": [
         { "src": "web/package.json", "use": "@now/next" },
-        { "src": "api/**/*.js", "use": "@now/node@0.11.1"}
+        { "src": "api/**/*.js", "use": "@now/node"}
     ],
     "routes": [
         { "src": "/api/contact", "dest": "/api/src/contact.js" },

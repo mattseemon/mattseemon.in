@@ -31,6 +31,10 @@ body {
 }
 
 .navbar-collapse {
+    
+}
+
+.navbar-collapse ul {
     height: 100vh;
     vertical-align: middle;
 }
