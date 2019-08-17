@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, InputGroup, InputGroupAddon, Input, Alert } from 'reactstrap';
 import axios from 'axios';
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 const styleIcon = { color: 'var(--accent)' };
 const styleNoResize = { resize: 'none' };
@@ -13,7 +14,8 @@ export default class ContactComponent extends React.Component {
         this.state = {
             alert: { color: '', message: '', show: false },
             loading: false,
-            contact: Object.create(defaultContact)
+            contact: Object.create(defaultContact),
+            submitEnabled: false
         };
     }
 
@@ -69,32 +71,42 @@ export default class ContactComponent extends React.Component {
         this.setState({ contact: Object.create(defaultContact) });
     }
 
+    onVerify = (token) => {
+        if(token) {
+            this.setState({ submitEnabled: true });
+        }
+    }
+
     render() {
         return (
             <div>
-                <Form onSubmit={ this.onSubmit }>
-                    <FormGroup className="pb-0 mb-0">
-                        <InputGroup className="mb-2">
-                            <InputGroupAddon addonType="prepend"><div className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-user" style={ styleIcon }></i></div></InputGroupAddon>
-                            <Input id="name" name="name" placeholder="Your name*" className="border-left-0 rounded-0" minLength="2" required value={ this.state.contact.name } onChange={ this.onChange } />
-                        </InputGroup>
-                        <InputGroup className="mb-2">
-                            <InputGroupAddon addonType="prepend"><div className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-at" style={ styleIcon }></i></div></InputGroupAddon>
-                            <Input id="email" name="email" type="email" placeholder="Your email* (will remain private)" className="border-left-0 rounded-0"  required value={ this.state.contact.email } onChange={ this.onChange } />
-                        </InputGroup>
-                        <InputGroup className="mb-2">
-                            <InputGroupAddon addonType="prepend"><span className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-edit" style={ styleIcon }></i></span></InputGroupAddon>
-                            <Input id="message" name="message" type="textarea" placeholder="Your message*" rows="10" className="border-left-0 rounded-0" required style={ styleNoResize } value={ this.state.contact.message } onChange={ this.onChange } />
-                        </InputGroup>
-                        <InputGroup className="mb-2">
-                            <InputGroupAddon addonType="prepend"><div className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-edit" style={ styleIcon }></i></div></InputGroupAddon>
-                            <Input id="source" name="source" placeholder="How did you hear about my website?" className="border-left-0 rounded-0" value={ this.state.contact.source } onChange={ this.onChange } />
-                        </InputGroup>
-                    </FormGroup>
-                    <Button color="primary" outline type="reset" onClick={ this.onReset }>Reset</Button>
-                    <Button color="primary" outline type="submit" className="ml-2" >{ this.state.loading ? ( <i className="fa fa-spinner fa-spin" /> ) : ( <i className="fas fa-envelope"/> ) } Send Message</Button>
-                </Form>
-                <Alert color={ this.state.alert.color } isOpen={ this.state.alert.show } className="rounded-0 mt-2 mb-4">{ this.state.alert.message }</Alert>
+                <GoogleReCaptchaProvider
+                 reCaptchaKey="6LfxNq0UAAAAAMdOrMZIwEozxkdigcXA2RA5yynr" >
+                    <Form onSubmit={ this.onSubmit }>
+                        <FormGroup className="pb-0 mb-0">
+                            <InputGroup className="mb-2">
+                                <InputGroupAddon addonType="prepend"><div className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-user" style={ styleIcon }></i></div></InputGroupAddon>
+                                <Input id="name" name="name" placeholder="Your name*" className="border-left-0 rounded-0" minLength="2" required value={ this.state.contact.name } onChange={ this.onChange } />
+                            </InputGroup>
+                            <InputGroup className="mb-2">
+                                <InputGroupAddon addonType="prepend"><div className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-at" style={ styleIcon }></i></div></InputGroupAddon>
+                                <Input id="email" name="email" type="email" placeholder="Your email* (will remain private)" className="border-left-0 rounded-0"  required value={ this.state.contact.email } onChange={ this.onChange } />
+                            </InputGroup>
+                            <InputGroup className="mb-2">
+                                <InputGroupAddon addonType="prepend"><span className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-edit" style={ styleIcon }></i></span></InputGroupAddon>
+                                <Input id="message" name="message" type="textarea" placeholder="Your message*" rows="10" className="border-left-0 rounded-0" required style={ styleNoResize } value={ this.state.contact.message } onChange={ this.onChange } />
+                            </InputGroup>
+                            <InputGroup className="mb-2">
+                                <InputGroupAddon addonType="prepend"><div className="input-group-text bg-transparent border-right-0 rounded-0"><i className="fas fa-edit" style={ styleIcon }></i></div></InputGroupAddon>
+                                <Input id="source" name="source" placeholder="How did you hear about my website?" className="border-left-0 rounded-0" value={ this.state.contact.source } onChange={ this.onChange } />
+                            </InputGroup>
+                        </FormGroup>
+                        <Button color="primary" outline type="reset" onClick={ this.onReset }>Reset</Button>
+                        <Button color="primary" outline type="submit" className="ml-2" disabled={ !this.state.submitEnabled } >{ this.state.loading ? ( <i className="fa fa-spinner fa-spin" /> ) : ( <i className="fas fa-envelope"/> ) } Send Message</Button>
+                    </Form>
+                    <Alert color={ this.state.alert.color } isOpen={ this.state.alert.show } className="rounded-0 mt-2 mb-4">{ this.state.alert.message }</Alert>
+                    <GoogleReCaptcha onVerify={ this.onVerify } />
+                </GoogleReCaptchaProvider>
             </div>
         )
     }
